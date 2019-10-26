@@ -1,7 +1,16 @@
 import { Router } from 'express';
+import User from './app/models/User';
 
 const routes = new Router();
 
-routes.get('/', (req, res) => res.json({ message: 'Hello Niva' }));
+routes.get('/', async (req, res) => {
+  const user = await User.create({
+    name: 'Nivaldo Junior',
+    email: 'nivaldo@simplifica.tech',
+    password_hash: '1234',
+  });
+
+  res.json(user);
+});
 
 export default routes;
