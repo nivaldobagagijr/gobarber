@@ -61,6 +61,13 @@ class AppointmentController {
     }
 
     /**
+     * Check if provider_id is equal user_id
+     */
+    if (provider_id === req.userId) {
+      return res.status(401).json({ error: 'User cannot be the Provider' });
+    }
+
+    /**
      * Check fro past dates
      */
     const hourStart = startOfHour(parseISO(date));
